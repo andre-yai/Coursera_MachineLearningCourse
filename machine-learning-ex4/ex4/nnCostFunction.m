@@ -63,18 +63,53 @@ Theta2_grad = zeros(size(Theta2));
 %
 
 
+I = eye(num_labels)
+Y = zeros(m, num_labels)
+disp(y)
+for i = 1 : m
+  Y(i, :) = I(y(i), :);
+end
+
+a1 = X;
+a2 = [ones(m,1),a1]* Theta1';
+g2 = sigmoid(a2);
+a3 = [ones(m,1),g2]* Theta2';
+g3 = sigmoid(a3);
+
+cost =  -Y .* log(g3) - (1-Y) .* log(1-g3);
 
 
+J = (1/m) * sum(sum(cost));
 
 
+% computing regularization parameters
 
 
+regularization_parameters = (sum(sum(Theta1(:,2:end).^2)) + sum(sum(Theta2(:,2:end).^2)));
+regularization = (lambda/(2*m))*(regularization_parameters);
+
+J = J + regularization;
 
 
+% final computation for cost and gradient
+
+% grad = 1/m .* X'*(g3-Y);
+% Theta1_grad  = (lambda/m) * [0; Theta1(:,2:end)];
+% Theta2_grad  = (lambda/m) * [0; Theta1(:,2:end)];
 
 
+% step 2
+% delta3 = A3 - Y;
+% % step 3
+% delta2 = (delta3 * Theta2 .* sigmoidGradient([ones(size(Z2), 1) Z2]))(:, 2:end);
 
+% step 4
+% Delta2 = delta3' * A2;
+% Delta1 = delta2' * A1;
 
+% step 5
+% Theta1_grad = 1 / m * Delta1 + lambda / m * [zeros(size(Theta1), 1) Theta1(:, 2:end)];
+% Theta2_grad = 1 / m * Delta2 + lambda / m * [zeros(size(Theta2), 1) Theta2(:, 2:end)];
 
 
 

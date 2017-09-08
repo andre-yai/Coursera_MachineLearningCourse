@@ -116,6 +116,8 @@ fprintf('Sigmoid gradient evaluated at [-1 -0.5 0 0.5 1]:\n  ');
 fprintf('%f ', g);
 fprintf('\n\n');
 
+submit()
+
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 
