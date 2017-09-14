@@ -54,10 +54,24 @@ error_val   = zeros(m, 1);
 % ---------------------- Sample Solution ----------------------
 
 
+for i = 1:m,
+
+	training_set_features = X(1:i, :)
+	training_set_labels = y(1:i)
+
+	validation_set_features = Xval
+	validation_set_labels = yval
+
+	[theta] = trainLinearReg(training_set_features, training_set_labels, lambda)
+
+	[Jtrain, gradtrain] = linearRegCostFunction(training_set_features,training_set_labels,  theta, 0)
+	[Jval, gradval] = linearRegCostFunction(validation_set_features,validation_set_labels,  theta, 0)
 
 
+	error_train(i) = Jtrain
+	error_val(i) = Jval
 
-
+endfor;
 
 % -------------------------------------------------------------
 

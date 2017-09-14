@@ -116,7 +116,6 @@ fprintf('Sigmoid gradient evaluated at [-1 -0.5 0 0.5 1]:\n  ');
 fprintf('%f ', g);
 fprintf('\n\n');
 
-submit()
 
 fprintf('Program paused. Press enter to continue.\n');
 pause;
@@ -173,6 +172,8 @@ fprintf(['\n\nCost at (fixed) debugging parameters (w/ lambda = %f): %f ' ...
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 
+
+submit()
 
 %% =================== Part 8: Training NN ===================
 %  You have now implemented all the code necessary to train a neural 

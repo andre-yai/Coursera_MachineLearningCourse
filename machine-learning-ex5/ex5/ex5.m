@@ -125,6 +125,7 @@ end
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 
+
 %% =========== Part 6: Feature Mapping for Polynomial Regression =============
 %  One solution to this is to use polynomial regression. You should now
 %  complete polyFeatures to map each example into its powers
@@ -216,5 +217,6 @@ for i = 1:length(lambda_vec)
             lambda_vec(i), error_train(i), error_val(i));
 end
 
+submit()
 fprintf('Program paused. Press enter to continue.\n');
 pause;
