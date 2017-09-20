@@ -22,7 +22,26 @@ idx = zeros(size(X,1), 1);
 %
 
 
+for example_index = 1:size(X,1)
 
+	smallest_distance  = 1000000;
+
+	example = X(example_index,:);
+
+	for centroid_index = 1:K 
+		
+		centroid = centroids(centroid_index,:);
+		
+		distance = sum((example-centroid).^2);
+
+		if(distance < smallest_distance)
+			smallest_distance = distance; 
+			centroid_idx = centroid_index;
+		end
+	end
+
+	idx(example_index) = centroid_idx;
+end
 
 
 

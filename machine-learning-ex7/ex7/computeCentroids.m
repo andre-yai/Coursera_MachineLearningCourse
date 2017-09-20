@@ -28,7 +28,28 @@ centroids = zeros(K, n);
 
 
 
+for centroid_index = 1:K
 
+	count_belongs = 0;
+	new_centroid = zeros(1,n);
+
+	for example_index = 1:m
+
+		idx_centroid = idx(example_index);
+
+		if(idx_centroid == centroid_index)
+	
+			count_belongs = count_belongs + 1;
+			example = X(example_index, :);
+			new_centroid = new_centroid + example;
+
+		end;
+	end;
+
+	new_centroid = new_centroid ./ count_belongs;
+	centroids(centroid_index,:) = new_centroid;
+
+end;
 
 
 
