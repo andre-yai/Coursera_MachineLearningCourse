@@ -235,3 +235,4 @@ for i = 1:length(my_ratings)
                  movieList{i});
     end
 end
+submit()

@@ -40,16 +40,32 @@ Theta_grad = zeros(size(Theta));
 %                     partial derivatives w.r.t. to each element of Theta
 %
 
+Y_predicted = (X*Theta');
+error_distance = (Y_predicted - Y);
+
+% step 1 - Cost Function 
+J = 1/2 * sum(sum(R .* (error_distance.^2)));
+
+% step 2 - Gradients
+Theta_grad = ((R .* (error_distance))' * X);
+
+X_grad = ((R .* (error_distance)) * Theta);
 
 
+% step 3 - Cost with regularization 
+
+Theta_reg =  (lambda/2) .* (sum(sum(Theta.^2)));
+
+X_reg =  (lambda/2) .* (sum(sum(X.^2)));
+
+J = J + Theta_reg + X_reg;
 
 
+% step 4 - Gradient regularized 
 
+Theta_grad = Theta_grad + (lambda .* Theta);
 
-
-
-
-
+X_grad = X_grad + (lambda .* X);
 
 
 
